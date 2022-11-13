@@ -15,7 +15,7 @@ let cantProducts;
  *
  * @param {*} index For the offset field
  */
-async function renderHTML(index = 1) {
+async function renderHTML(index = 0) {
   const products = await showProducts(index);
   cantProducts = products.count;
   renderGridCard(products.rows);
@@ -31,7 +31,7 @@ function renderGridCard(data) {
     gridcard += `<div class="card" style="width: 18rem;">
       <img src="${product.url_image}" class="card-img-top" alt="...">
       <div class="card-body">
-        <span class="text-bold">${product.name}</span><br>
+        <span class="fw-bold">${product.name}</span><br>
         <span>Price: $${product.price}</span><br><br>
         <button class="btn btn-outline btn-primary">Add to cart</button>
       </div>
