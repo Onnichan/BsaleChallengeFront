@@ -9,6 +9,6 @@ Este es un challenge para puesto frontend developer en Bsale que consta de reali
 * JAVASCRIPT
 * BOOTSTRAP
 
-El backend esta desplegado en heroku y puedes verlo el código aqui
+Este proyecto frontend puedes verlo desde [aqui](bsale-challenge-front.vercel.app) que esta desplegado en VERCEL
 
 
