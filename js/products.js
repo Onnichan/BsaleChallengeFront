@@ -79,7 +79,7 @@ async function renderProduct(element, e) {
 
 async function renderCategories() {
   const asideCategories = document.getElementById("aside-categories");
-  let htmlCategories = `<h3 class="text-muted text-center">Categories</h3>`;
+  let htmlCategories = `<h3 class="text-muted text-center">Categorias</h3>`;
   htmlCategories += `<nav class="d-flex flex-column gap-2 p-5">`;
 
   const categories = await getAllCategories();
