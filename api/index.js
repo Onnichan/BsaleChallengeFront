@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:4000/api/v1";
+const API_URL = "https://bsale-cart.herokuapp.com/api/v1";
 
 async function getAllProducts(offset = 5, limit = 5) {
   const resp = await fetch(
