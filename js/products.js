@@ -25,7 +25,7 @@ function renderGridCard(data) {
       <div class="card-body">
         <span class="fw-bold">${product.name}</span><br>
         <span class="text-danger">$${product.price}</span><br><br>
-        <button class="btn btn-outline btn-primary">Add to cart</button>
+        <button class="btn btn-outline btn-primary">Añadir al carrito</button>
       </div>
     </div>`;
   }
