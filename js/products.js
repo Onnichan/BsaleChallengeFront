@@ -65,11 +65,20 @@ async function showProducts(index) {
 async function renderProduct(element, e) {
   // console.log(e);
   if (e.keyCode == 13) {
+    if(element.value.length > 0){
+      const findProduct = await searchProduct(element.value);
+      renderGridCard(findProduct.rows);
+      renderPagination(findProduct.count);
+      console.log(findProduct);
+    }else{
+      const resp = await getAllProducts(
+        cantProductByPage * 0,
+        cantProductByPage
+      );
+      renderGridCard(resp.rows);
+      renderPagination(resp.count);
+    }
     // console.log(element.value);
-    const findProduct = await searchProduct(element.value);
-    renderGridCard(findProduct.rows);
-    renderPagination(findProduct.count);
-    console.log(findProduct);
   }
 }
 
