@@ -20,11 +20,11 @@ function renderGridCard(data) {
 
   for (let i = 0; i < data.length; i++) {
     let product = data[i];
-    gridcard += `<div class="card" style="width: 18rem;">
+    gridcard += `<div class="card shadow border-0" style="width: 18rem;">
       <img src="${product.url_image}" class="card-img-top" alt="...">
       <div class="card-body">
         <span class="fw-bold">${product.name}</span><br>
-        <span>Price: $${product.price}</span><br><br>
+        <span class="text-danger">$${product.price}</span><br><br>
         <button class="btn btn-outline btn-primary">Add to cart</button>
       </div>
     </div>`;
@@ -59,9 +59,13 @@ async function renderProduct(element, e) {
   if (e.keyCode == 13) {
     if(element.value.length > 0){
       const findProduct = await searchProduct(element.value);
-      renderGridCard(findProduct.rows);
-      renderPagination(findProduct.count);
-      console.log(findProduct);
+      if(findProduct.count === 0){
+        grid.innerHTML = `<span class="mt-5 fs-4">No se encontró el producto:  ${element.value}</span> `;
+        pagination.innerHTML = "";
+      }else{
+        renderGridCard(findProduct.rows);
+        renderPagination(findProduct.count);
+      }
     }else{
       const resp = await getAllProducts(
         cantProductByPage * 0,
@@ -70,7 +74,6 @@ async function renderProduct(element, e) {
       renderGridCard(resp.rows);
       renderPagination(resp.count);
     }
-    // console.log(element.value);
   }
 }
 
