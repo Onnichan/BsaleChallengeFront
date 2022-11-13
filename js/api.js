@@ -11,7 +11,7 @@ async function getAllProducts(offset = 5, limit = 5) {
 async function getAllCategories() {
   const resp = await fetch(`${API_URL}/categories`);
   const categories = await resp.json();
-  return categories;                                                                                                                                                                  
+  return categories;
 }
 
 async function searchProduct(search) {
