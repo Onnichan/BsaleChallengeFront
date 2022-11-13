@@ -4,17 +4,9 @@ let cantProductByPage;
 let cantProducts;
 
 (async () => {
-  // const products = await showProducts();
-  // cantProducts = products.count;
-  // renderGridCard(products);
-  // renderPagination(products);
   renderHTML();
 })();
 
-/**
- *
- * @param {*} index For the offset field
- */
 async function renderHTML(index = 0) {
   const products = await showProducts(index);
   cantProducts = products.count;
