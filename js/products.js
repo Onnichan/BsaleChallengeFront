@@ -1,5 +1,7 @@
 const grid = document.getElementById("grid");
 const pagination = document.getElementById("pagination");
+let productsHTML = document.getElementById("cantProducts");
+
 let cantProductByPage;
 let cantProducts;
 
@@ -10,14 +12,14 @@ let cantProducts;
 async function renderHTML(index = 0) {
   const products = await showProducts(index);
   cantProducts = products.count;
-  renderGridCard(products.rows);
+  renderGridCard(products.rows, cantProducts);
   renderPagination(cantProducts);
   renderCategories();
 }
 
-function renderGridCard(data) {
+function renderGridCard(data, count) {
   let gridcard = "";
-
+  productsHTML.innerHTML = `Total de productos: ${count}`;
   for (let i = 0; i < data.length; i++) {
     let product = data[i];
     gridcard += `<div class="card shadow border-0" style="width: 18rem;">
@@ -25,7 +27,7 @@ function renderGridCard(data) {
       <div class="card-body">
         <span class="fw-bold">${product.name}</span><br>
         <span class="text-danger">$${product.price}</span><br><br>
-        <button class="btn btn-outline btn-secondary">Añadir al carrito</button>
+        <button class="btn btn-outline btn-secondary" onclick='addProductToCart(${JSON.stringify(product)})'>Añadir al carrito</button>
       </div>
     </div>`;
   }
@@ -63,7 +65,7 @@ async function renderProduct(element, e) {
         grid.innerHTML = `<span class="mt-5 fs-4">No se encontró el producto:  ${element.value}</span> `;
         pagination.innerHTML = "";
       }else{
-        renderGridCard(findProduct.rows);
+        renderGridCard(findProduct.rows, findProduct.count);
         renderPagination(findProduct.count);
       }
     }else{
@@ -103,6 +105,6 @@ async function renderProductsByCategory(category, index = 1) {
   );
 
   console.log(productsByCategory);
-  renderGridCard(productsByCategory.rows[0].products);
+  renderGridCard(productsByCategory.rows[0].products, productsByCategory.count);
   renderPagination(productsByCategory.count);
 }
