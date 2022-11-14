@@ -1,13 +1,8 @@
 const grid = document.getElementById("grid");
 const pagination = document.getElementById("pagination");
 let productsHTML = document.getElementById("cantProducts");
-
 let cantProductByPage;
 let cantProducts;
-
-(async () => {
-  renderHTML();
-})();
 
 async function renderHTML(index = 0) {
   const products = await showProducts(index);
@@ -96,8 +91,8 @@ async function renderCategories() {
 }
 
 async function renderProductsByCategory(category, index = 1) {
-  console.log(category);
   cantProductByPage = document.getElementById("productsByPage").value;
+  window.category = category;
   const productsByCategory = await getProductsByCategory(
     cantProductByPage*0,
     cantProductByPage,
@@ -108,3 +103,7 @@ async function renderProductsByCategory(category, index = 1) {
   renderGridCard(productsByCategory.rows[0].products, productsByCategory.count);
   renderPagination(productsByCategory.count);
 }
+
+(async () => {
+  renderHTML();
+})();
