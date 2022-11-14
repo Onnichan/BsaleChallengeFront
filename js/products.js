@@ -73,7 +73,7 @@ async function renderProduct(element, e) {
         cantProductByPage * 0,
         cantProductByPage
       );
-      renderGridCard(resp.rows);
+      renderGridCard(resp.rows, resp.count);
       renderPagination(resp.count);
     }
   }
