@@ -89,10 +89,10 @@
       </div>
       <div class="offcanvas-body d-flex flex-column" id="offcanvas-body"></div>
     </div>
-    <h3 class="text-center mt-5">PRODUCTOS</h3>
-    <main class="main d-flex">
-      <aside style="width: 20%" id="aside-categories"></aside>
-      <div style="width: 80%" class="p-5">
+    <main class="main d-flex flex-column flex-md-row">
+      <aside id="aside-categories" class="pt-5 aside-categories"></aside>
+      <section class="p-5 section-products">
+        <h3 class="text-center">PRODUCTOS</h3>
         <div class="d-flex justify-content-between">
           <span class="text-muted" id="cantProducts"></span>
           <select
@@ -107,13 +107,13 @@
             <option value="15">15</option>
           </select>
         </div>
-        <section class="products mt-5" id="products">
+        <div class="products mt-5" id="products">
           <div id="grid" class="grid"></div>
           <nav aria-label="Page navigation example">
             <ul class="pagination mt-5" id="pagination"></ul>
           </nav>
-        </section>
-      </div>
+        </div>
+      </section>
     </main>
     <script src="./js/api.js"></script>
     <script src="./js/products.js"></script>
