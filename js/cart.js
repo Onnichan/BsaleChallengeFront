@@ -3,16 +3,26 @@ let productsOfCart = localStorage.getItem("products")
   : [];
 
 const addProductToCart = product => {
-  productsOfCart.push(product);
-  localStorage.setItem("products", JSON.stringify(productsOfCart));
-  renderCart(productsOfCart);
-  countToCart(productsOfCart);
-  initialzeCantProductToCart();
+  if (productsOfCart.length > 0) {
+    if (!productsOfCart.find(elem => elem.id == product.id)) {
+      productsOfCart.push(product);
+      localStorage.setItem("products", JSON.stringify(productsOfCart));
+      renderCart(productsOfCart);
+      countToCart(productsOfCart);
+      initialzeCantProductToCart();
+    }
+  } else {
+    productsOfCart.push(product);
+    localStorage.setItem("products", JSON.stringify(productsOfCart));
+    renderCart(productsOfCart);
+    countToCart(productsOfCart);
+    initialzeCantProductToCart();
+  }
 };
 
-const countToCart = (product) => {
-  localStorage.setItem("cantProducts", product.length)
-}
+const countToCart = product => {
+  localStorage.setItem("cantProducts", product.length);
+};
 
 const getProductsOfCart = () => {
   const productsToJson = localStorage.getItem("products");
@@ -44,8 +54,9 @@ function renderCart(products) {
 }
 
 const initialzeCantProductToCart = () => {
-  document.getElementById("cantProductToCart").innerHTML = localStorage.getItem("cantProducts")
-}
+  document.getElementById("cantProductToCart").innerHTML =
+    localStorage.getItem("cantProducts");
+};
 
 (() => {
   renderCart(productsOfCart);
